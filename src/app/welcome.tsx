@@ -15,6 +15,9 @@ import { requestNotificationPermission } from '@/lib/notify';
 import { type TrackingMode, useSettings } from '@/store/settings';
 import { fonts, radius, space, type, useColors } from '@/theme';
 
+const enter = Platform.OS === 'ios' ? FadeInRight : undefined;
+const exit = Platform.OS === 'ios' ? FadeOutLeft : undefined;
+
 const MODES: { mode: TrackingMode; icon: IconName }[] = [
   { mode: 'gps', icon: 'gps' },
   { mode: 'obd', icon: 'antenna' },
@@ -83,7 +86,7 @@ export default function WelcomeScreen() {
         </View>
 
         {step === 0 ? (
-          <Animated.View key="s0" entering={FadeInRight} exiting={FadeOutLeft} style={{ flex: 1, gap: space.xl }}>
+          <Animated.View key="s0" entering={enter} exiting={exit} style={{ flex: 1, gap: space.xl }}>
             <View style={[styles.logo, { backgroundColor: c.accent }]}>
               <Icon name="route" size={34} color="#FFFFFF" />
             </View>
@@ -112,7 +115,7 @@ export default function WelcomeScreen() {
         ) : null}
 
         {step === 1 ? (
-          <Animated.View key="s1" entering={FadeInRight} exiting={FadeOutLeft} style={{ flex: 1, gap: space.lg }}>
+          <Animated.View key="s1" entering={enter} exiting={exit} style={{ flex: 1, gap: space.lg }}>
             <View style={{ gap: space.sm, marginBottom: space.sm }}>
               <Text style={[type.title, { color: c.text }]}>{t('welcome.vehicleTitle')}</Text>
               <Text style={[type.body, { color: c.textSecondary }]}>{t('welcome.vehicleBody')}</Text>
@@ -129,7 +132,7 @@ export default function WelcomeScreen() {
         ) : null}
 
         {step === 2 ? (
-          <Animated.View key="s2" entering={FadeInRight} exiting={FadeOutLeft} style={{ flex: 1, gap: space.lg }}>
+          <Animated.View key="s2" entering={enter} exiting={exit} style={{ flex: 1, gap: space.lg }}>
             <View style={{ gap: space.sm, marginBottom: space.sm }}>
               <Text style={[type.title, { color: c.text }]}>{t('welcome.modeTitle')}</Text>
               <Text style={[type.body, { color: c.textSecondary }]}>{t('welcome.modeBody')}</Text>

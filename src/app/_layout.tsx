@@ -12,6 +12,7 @@ import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { changed, repo } from '@/data/db';
 import { useT } from '@/i18n';
 import { useObdAutoStart } from '@/lib/auto-obd';
+import { SCREENSHOT_MODE } from '@/lib/demo';
 import { iconFonts, textFonts } from '@/lib/fonts';
 import { scheduleReminders } from '@/lib/notify';
 import { useSettings } from '@/store/settings';
@@ -100,9 +101,11 @@ function Navigator() {
           <Stack.Screen name="rules" options={{ ...pushed, title: t('rules.title') }} />
           <Stack.Screen name="about" options={{ ...pushed, title: t('about.title') }} />
         </Stack.Protected>
-        <Stack.Screen name="seed" />
         <Stack.Protected guard={!onboarded}>
           <Stack.Screen name="welcome" />
+        </Stack.Protected>
+        <Stack.Protected guard={SCREENSHOT_MODE}>
+          <Stack.Screen name="seed" />
         </Stack.Protected>
       </Stack>
     </ThemeProvider>
