@@ -9,7 +9,7 @@
     "userInterfaceStyle": "automatic",
     "ios": {
       "bundleIdentifier": "de.codext.fahrtenbuch",
-      "buildNumber": "2",
+      "buildNumber": "3",
       "supportsTablet": false,
       "config": {
         "usesNonExemptEncryption": false
@@ -81,10 +81,8 @@
       [
         "react-native-ble-plx",
         {
-          "isBackgroundEnabled": true,
-          "modes": [
-            "central"
-          ],
+          "isBackgroundEnabled": false,
+          "modes": [],
           "neverForLocation": true,
           "bluetoothAlwaysPermission": "OpenFahrtenbuch verbindet sich mit deinem Bluetooth-OBD-Adapter, um den Kilometerstand des Autos zu lesen."
         }

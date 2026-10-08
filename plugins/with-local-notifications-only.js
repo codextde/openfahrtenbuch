@@ -7,7 +7,7 @@ module.exports = function withLocalNotificationsOnly(config) {
   });
   return withInfoPlist(config, (mod) => {
     const modes = mod.modResults.UIBackgroundModes;
-    if (Array.isArray(modes)) mod.modResults.UIBackgroundModes = modes.filter((m) => m !== 'fetch' && m !== 'remote-notification');
+    if (Array.isArray(modes)) mod.modResults.UIBackgroundModes = modes.filter((m) => !['fetch', 'remote-notification', 'bluetooth-central'].includes(m));
     return mod;
   });
 };
