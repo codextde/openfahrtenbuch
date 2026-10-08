@@ -2,7 +2,7 @@
 
 Free, open-source mileage log (Fahrtenbuch) for iPhone and Android, built to the requirements of the German tax office. Record trips with the phone's GPS, with a cheap Bluetooth LE OBD adapter, or by hand. No account, no server, no ads, no subscription.
 
-Website: [fahrtenbuch.codext.de](https://fahrtenbuch.codext.de)
+Website: [fahrtenbuch.codext.de](https://fahrtenbuch.codext.de) · [App Store](https://apps.apple.com/app/id6820417114) · [Google Play](https://play.google.com/store/apps/details?id=de.codext.fahrtenbuch)
 
 ## What it does
 
