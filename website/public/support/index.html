@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Hilfe und häufige Fragen – OpenFahrtenbuch</title>
+<meta name="description" content="Antworten zu OpenFahrtenbuch: Finanzamt, OBD-Adapter, Backups, 7-Tage-Frist, GPS und Kilometerstand. Kontakt: kontakt@codext.de">
+<link rel="canonical" href="https://fahrtenbuch.codext.de/support/">
+<link rel="alternate" hreflang="de" href="https://fahrtenbuch.codext.de/support/">
+<link rel="alternate" hreflang="en" href="https://fahrtenbuch.codext.de/en/support/">
+<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+<link rel="stylesheet" href="/assets/style.css">
+</head>
+<body>
+<div class="wrap">
+  <header class="nav">
+    <a class="brand" href="/"><img src="/assets/favicon.svg" alt="" width="32" height="32">OpenFahrtenbuch</a>
+    <nav class="nav-links" aria-label="Hauptnavigation"><a href="/support/" aria-current="page">Hilfe</a><a href="/datenschutz/">Datenschutz</a><a class="lang" href="/en/support/" hreflang="en" lang="en">EN</a></nav>
+  </header>
+  <main class="doc">
+    <h1>Hilfe</h1>
+    <p class="meta">Antworten auf die häufigsten Fragen. Nicht dabei? Schreib uns an <a href="mailto:kontakt@codext.de">kontakt@codext.de</a>.</p>
+
+    <div class="faq">
+      <details>
+        <summary>Ist OpenFahrtenbuch finanzamtkonform?</summary>
+        <div>
+          <p>Das Finanzamt zertifiziert keine Fahrtenbuch-Software, auch keine kostenpflichtige. Wer „finanzamtkonform“ verspricht, meint immer: nach den veröffentlichten Anforderungen gebaut. Das gilt auch hier. OpenFahrtenbuch setzt die Vorgaben aus R 8.1 Abs. 9 LStR, dem BMF-Schreiben und der Rechtsprechung um:</p>
+          <ul>
+            <li>zeitnahe Erfassung mit Erinnerung und 7-Tage-Frist,</li>
+            <li>geschlossene Form: fortlaufend nummeriert, kein Löschen, nur Stornieren mit Begründung,</li>
+            <li>lückenloser Kilometerstand mit Erkennung von Lücken,</li>
+            <li>Pflichtangaben bei Dienstfahrten: Ziel, Reisezweck, Geschäftspartner, bei Umwegen die Route,</li>
+            <li>dokumentierte Änderungen in einer SHA-256-Hashkette, im PDF direkt bei der Fahrt mit Datum, Uhrzeit und ursprünglichem Wert (FG Düsseldorf 3 K 1887/22 H(L), BFH VI B 37/23).</li>
+          </ul>
+          <p>Ob dein Fahrtenbuch anerkannt wird, hängt davon ab, wie du es führst. Das ist keine Steuerberatung; bei Fragen zu deinem Fall hilft deine Steuerberatung.</p>
+        </div>
+      </details>
+
+      <details>
+        <summary>Welche OBD-Adapter funktionieren?</summary>
+        <div>
+          <p>Die App spricht mit Adaptern über <strong>Bluetooth Low Energy (BLE)</strong> mit ELM327-kompatiblem Befehlssatz. Gut geeignet sind zum Beispiel:</p>
+          <ul>
+            <li>vLinker MC+ oder vLinker FS BLE</li>
+            <li>OBDLink CX</li>
+            <li>Veepeak BLE+</li>
+          </ul>
+          <p>Klassische Bluetooth-Adapter, die man mit einer PIN wie 1234 koppelt, funktionieren nicht. Auf dem iPhone lässt iOS solche Adapter für Apps grundsätzlich nicht zu. Achte beim Kauf auf „BLE“ oder „Bluetooth 4.0/5.0 LE“ und darauf, dass iOS bzw. Android ausdrücklich unterstützt wird. Auch WLAN-Adapter werden nicht unterstützt.</p>
+          <p>Ob dein Auto den Kilometerstand über OBD meldet (PID A6), hängt vom Fahrzeug ab; längst nicht jedes Auto unterstützt das. Wenn nicht, nutzt die App die Geschwindigkeit, um die Strecke zu berechnen, und du gleichst den Kilometerstand gelegentlich von Hand ab.</p>
+        </div>
+      </details>
+
+      <details>
+        <summary>Brauche ich ein Konto?</summary>
+        <div><p>Nein. Es gibt kein Konto, keine Anmeldung und keinen Server. Alle Daten liegen auf deinem Handy.</p></div>
+      </details>
+
+      <details>
+        <summary>Wie funktionieren Backups?</summary>
+        <div>
+          <p>Über den Export erstellst du ein vollständiges JSON-Backup mit allen Fahrzeugen, Fahrten, Orten, Kosten und dem Änderungsprotokoll. Speichere die Datei an einem Ort deiner Wahl, zum Beispiel in deinem eigenen Cloud-Speicher, auf dem Rechner oder per E-Mail an dich selbst.</p>
+          <p>Auf einem neuen Handy installierst du die App und stellst das Backup wieder her. Weil es keinen Server gibt, haben wir keine Kopie deiner Daten. Erstelle das Backup deshalb regelmäßig, am besten jeden Monat und vor jedem Handywechsel.</p>
+        </div>
+      </details>
+
+      <details>
+        <summary>Was passiert nach 7 Tagen?</summary>
+        <div>
+          <p>Eine Fahrt muss zeitnah vervollständigt werden. Fehlen noch Angaben, etwa der Reisezweck oder der Geschäftspartner, zeigt die App die Fahrt als unvollständig an und erinnert dich vor Ablauf der Frist.</p>
+          <p>Vollständige Fahrten werden 7 Tage nach der Fahrt festgeschrieben. Danach lassen sie sich nicht mehr ändern. Bis dahin kannst du korrigieren; jede Änderung wird mit Datum, Uhrzeit und ursprünglichem Wert festgehalten und erscheint im PDF. Eine falsch angelegte Fahrt kannst du stornieren, sie bleibt mit Begründung sichtbar.</p>
+        </div>
+      </details>
+
+      <details>
+        <summary>Warum weicht die GPS-Strecke vom Kilometerzähler ab, und wie korrigiere ich das?</summary>
+        <div>
+          <p>GPS misst die Strecke über einzelne Positionspunkte. In Kurven, Tunneln, Parkhäusern oder bei schwachem Empfang fehlen Punkte, und die Strecke wird etwas kürzer oder länger. Auch der Kilometerzähler im Auto weicht selbst leicht ab, zum Beispiel durch Reifengröße und Abnutzung. Für das Finanzamt zählt der Kilometerstand des Fahrzeugs.</p>
+          <p>So korrigierst du: Lies den Kilometerstand am Ende der Fahrt oder des Tages ab und trage ihn bei der letzten Fahrt als Kilometerstand am Ende ein, bevor die Fahrt nach 7 Tagen festgeschrieben wird. Die Änderung wird dokumentiert. Fällt dir eine Abweichung erst später auf, zeigt die App beim nächsten Kilometerstand eine Lücke, die du mit einer nachgetragenen Fahrt schließen kannst. Mit einem OBD-Adapter, der den Kilometerstand liefert, entfällt das Abgleichen.</p>
+          <p>Weicht GPS bei deinem Auto regelmäßig ab, stell in den Fahrzeugeinstellungen eine GPS-Korrektur ein, zum Beispiel 1,02 für 2 % mehr.</p>
+        </div>
+      </details>
+
+      <details>
+        <summary>Läuft die Aufzeichnung auch bei gesperrtem Bildschirm?</summary>
+        <div><p>Ja. Während eine Fahrt aktiv ist, zeichnet die App im Hintergrund weiter auf. Dafür reicht die Berechtigung „Beim Verwenden der App“: Die Aufzeichnung startet immer durch dich, das iPhone zeigt währenddessen den blauen Standort-Hinweis, Android eine Benachrichtigung. Ohne aktive Fahrt nutzt die App deinen Standort nicht. Auf Android können Energiesparfunktionen mancher Hersteller Hintergrund-Apps beenden; nimm OpenFahrtenbuch in diesem Fall von der Akku-Optimierung aus.</p></div>
+      </details>
+
+      <details>
+        <summary>Funktioniert die App ohne Internet?</summary>
+        <div><p>Ja, die Aufzeichnung und alle Daten funktionieren offline. Nur die automatische Umwandlung von Koordinaten in Adressen braucht in der Regel eine Verbindung. Fehlt sie, trägst du die Adresse nach.</p></div>
+      </details>
+
+      <details>
+        <summary>Kann ich private Ziele im Export verbergen?</summary>
+        <div><p>Ja. Bei Privatfahrten genügen dem Finanzamt die gefahrenen Kilometer. Auf Wunsch blendet der Export die Ziele von Privatfahrten aus.</p></div>
+      </details>
+
+      <details>
+        <summary>Kann ich eine Fahrt löschen?</summary>
+        <div><p>Nein, und das ist Absicht. Ein Fahrtenbuch, aus dem man Einträge löschen kann, erkennt das Finanzamt nicht an. Stattdessen stornierst du die Fahrt mit einer Begründung. Sie bleibt im Fahrtenbuch sichtbar, zählt aber nicht mehr mit.</p></div>
+      </details>
+
+      <details>
+        <summary>Ist die App wirklich kostenlos?</summary>
+        <div><p>Ja. Keine Werbung, kein Abo, keine In-App-Käufe. OpenFahrtenbuch ist Open Source unter der MIT-Lizenz; den Quellcode findest du auf <a href="https://github.com/codextde/openfahrtenbuch">GitHub</a>.</p></div>
+      </details>
+    </div>
+
+    <div class="contact">
+      <h2>Kontakt</h2>
+      <p>Fragen, Feedback oder ein Fehler gefunden? Schreib uns an <a href="mailto:kontakt@codext.de">kontakt@codext.de</a>. Fehler und Wünsche kannst du auch als Issue auf <a href="https://github.com/codextde/openfahrtenbuch/issues">GitHub</a> melden.</p>
+      <p>Bitte schick uns keine Fahrtenbuch-Exporte mit persönlichen Daten, wenn wir nicht ausdrücklich darum bitten. Eine Steuerberatung können wir nicht leisten.</p>
+    </div>
+  </main>
+  <footer>
+    <span>© 2026 Codext GmbH</span>
+    <nav aria-label="Fußzeile"><a href="/">Start</a><a href="/datenschutz/">Datenschutz</a><a href="/impressum/">Impressum</a><a href="https://github.com/codextde/openfahrtenbuch">GitHub</a><a href="/en/support/" hreflang="en" lang="en">English</a></nav>
+  </footer>
+</div>
+</body>
+</html>

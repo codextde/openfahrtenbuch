@@ -1,0 +1,119 @@
+{
+  "expo": {
+    "name": "OpenFahrtenbuch",
+    "slug": "openfahrtenbuch",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/images/icon.png",
+    "scheme": "openfahrtenbuch",
+    "userInterfaceStyle": "automatic",
+    "ios": {
+      "bundleIdentifier": "de.codext.fahrtenbuch",
+      "buildNumber": "1",
+      "supportsTablet": false,
+      "config": {
+        "usesNonExemptEncryption": false
+      },
+      "infoPlist": {
+        "CFBundleDevelopmentRegion": "de",
+        "CFBundleLocalizations": [
+          "de",
+          "en"
+        ],
+        "NSLocationWhenInUseUsageDescription": "OpenFahrtenbuch misst während einer laufenden Fahrt die Strecke und ermittelt Start- und Zieladresse. Der Standort bleibt auf deinem iPhone.",
+        "NSLocationAlwaysAndWhenInUseUsageDescription": "OpenFahrtenbuch misst während einer laufenden Fahrt die Strecke, auch wenn du die App verlässt. Der Standort bleibt auf deinem iPhone.",
+        "NSLocationAlwaysUsageDescription": "OpenFahrtenbuch misst während einer laufenden Fahrt die Strecke, auch wenn du die App verlässt. Der Standort bleibt auf deinem iPhone.",
+        "NSBluetoothAlwaysUsageDescription": "OpenFahrtenbuch verbindet sich mit deinem Bluetooth-OBD-Adapter, um den Kilometerstand des Autos zu lesen."
+      }
+    },
+    "android": {
+      "package": "de.codext.fahrtenbuch",
+      "versionCode": 2,
+      "adaptiveIcon": {
+        "backgroundColor": "#0E9F6E",
+        "foregroundImage": "./assets/images/android-icon-foreground.png",
+        "backgroundImage": "./assets/images/android-icon-background.png",
+        "monochromeImage": "./assets/images/android-icon-monochrome.png"
+      },
+      "predictiveBackGestureEnabled": true,
+      "permissions": [
+        "android.permission.POST_NOTIFICATIONS"
+      ],
+      "blockedPermissions": [
+        "android.permission.RECORD_AUDIO",
+        "android.permission.READ_EXTERNAL_STORAGE",
+        "android.permission.WRITE_EXTERNAL_STORAGE",
+        "android.permission.SYSTEM_ALERT_WINDOW",
+        "android.permission.ACCESS_BACKGROUND_LOCATION",
+        "android.permission.ACTIVITY_RECOGNITION"
+      ]
+    },
+    "web": {
+      "output": "static",
+      "favicon": "./assets/images/favicon.png"
+    },
+    "plugins": [
+      "./plugins/with-local-notifications-only.js",
+      "./plugins/with-single-location-permission.js",
+      "expo-router",
+      [
+        "expo-splash-screen",
+        {
+          "backgroundColor": "#F4F5F7",
+          "image": "./assets/images/splash-icon.png",
+          "imageWidth": 96,
+          "dark": {
+            "backgroundColor": "#0A0C0F",
+            "image": "./assets/images/splash-icon.png"
+          }
+        }
+      ],
+      [
+        "expo-location",
+        {
+          "locationWhenInUsePermission": "OpenFahrtenbuch misst während einer laufenden Fahrt die Strecke und ermittelt Start- und Zieladresse. Der Standort bleibt auf deinem iPhone.",
+          "isIosBackgroundLocationEnabled": true,
+          "isAndroidBackgroundLocationEnabled": false,
+          "isAndroidForegroundServiceEnabled": true,
+          "androidForegroundServiceIcon": "./assets/images/notification-icon.png"
+        }
+      ],
+      [
+        "react-native-ble-plx",
+        {
+          "isBackgroundEnabled": true,
+          "modes": [
+            "central"
+          ],
+          "neverForLocation": true,
+          "bluetoothAlwaysPermission": "OpenFahrtenbuch verbindet sich mit deinem Bluetooth-OBD-Adapter, um den Kilometerstand des Autos zu lesen."
+        }
+      ],
+      [
+        "expo-notifications",
+        {
+          "icon": "./assets/images/notification-icon.png",
+          "color": "#0E9F6E"
+        }
+      ],
+      "expo-sharing",
+      "expo-sqlite",
+      "expo-web-browser",
+      "expo-localization",
+      "expo-font",
+      [
+        "expo-build-properties",
+        {
+          "android": {
+            "minSdkVersion": 26
+          }
+        }
+      ],
+      "./plugins/with-scene-lifecycle.js"
+    ],
+    "experiments": {
+      "reactCompiler": true,
+      "typedRoutes": false
+    }
+  }
+}

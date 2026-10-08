@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Help and FAQ – OpenFahrtenbuch</title>
+<meta name="description" content="Answers about OpenFahrtenbuch: tax office, OBD adapters, backups, the 7-day rule, GPS and odometer. Contact: kontakt@codext.de">
+<link rel="canonical" href="https://fahrtenbuch.codext.de/en/support/">
+<link rel="alternate" hreflang="de" href="https://fahrtenbuch.codext.de/support/">
+<link rel="alternate" hreflang="en" href="https://fahrtenbuch.codext.de/en/support/">
+<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+<link rel="stylesheet" href="/assets/style.css">
+</head>
+<body>
+<div class="wrap">
+  <header class="nav">
+    <a class="brand" href="/en/"><img src="/assets/favicon.svg" alt="" width="32" height="32">OpenFahrtenbuch</a>
+    <nav class="nav-links" aria-label="Main"><a href="/en/support/" aria-current="page">Help</a><a href="/en/privacy/">Privacy</a><a class="lang" href="/support/" hreflang="de" lang="de">DE</a></nav>
+  </header>
+  <main class="doc">
+    <h1>Help</h1>
+    <p class="meta">Answers to the most common questions. Not listed? Email us at <a href="mailto:kontakt@codext.de">kontakt@codext.de</a>.</p>
+
+    <div class="faq">
+      <details>
+        <summary>Will the German tax office accept it?</summary>
+        <div>
+          <p>The tax office does not certify any logbook software, paid or free. Anyone promising "finanzamtkonform" means: built to the published requirements. That is true here too. OpenFahrtenbuch implements the rules of R 8.1 (9) LStR, the BMF circular and case law:</p>
+          <ul>
+            <li>timely recording with reminders and a 7-day deadline,</li>
+            <li>closed form: numbered consecutively, no deleting, only voiding with a reason,</li>
+            <li>a continuous odometer with gap detection,</li>
+            <li>required details for business trips: destination, purpose, business partner and the route for detours,</li>
+            <li>documented changes in a SHA-256 hash chain, shown in the PDF next to the trip with date, time and original value (FG Düsseldorf 3 K 1887/22 H(L), BFH VI B 37/23).</li>
+          </ul>
+          <p>Whether your logbook is accepted depends on how you keep it. This is not tax advice; for your specific case, ask your tax advisor.</p>
+        </div>
+      </details>
+
+      <details>
+        <summary>Which OBD adapters work?</summary>
+        <div>
+          <p>The app talks to adapters over <strong>Bluetooth Low Energy (BLE)</strong> with an ELM327-compatible command set. Good choices are, for example:</p>
+          <ul>
+            <li>vLinker MC+ or vLinker FS BLE</li>
+            <li>OBDLink CX</li>
+            <li>Veepeak BLE+</li>
+          </ul>
+          <p>Classic Bluetooth adapters that you pair with a PIN such as 1234 do not work. On iPhone, iOS does not allow apps to use them at all. When buying, look for "BLE" or "Bluetooth 4.0/5.0 LE" and explicit iOS or Android support. Wi-Fi adapters are not supported either.</p>
+          <p>Whether your car reports the odometer over OBD (PID A6) depends on the vehicle; by no means every car supports it. If not, the app uses the speed to calculate the distance, and you check the odometer by hand now and then.</p>
+        </div>
+      </details>
+
+      <details>
+        <summary>Do I need an account?</summary>
+        <div><p>No. There is no account, no sign-in and no server. All data stays on your phone.</p></div>
+      </details>
+
+      <details>
+        <summary>How do backups work?</summary>
+        <div>
+          <p>From the export, you create a full JSON backup with all vehicles, trips, places, costs and the change log. Store the file wherever you like, for example in your own cloud storage, on your computer or by email to yourself.</p>
+          <p>On a new phone, install the app and restore the backup. Because there is no server, we have no copy of your data. So back up regularly, ideally every month and before switching phones.</p>
+        </div>
+      </details>
+
+      <details>
+        <summary>What happens after 7 days?</summary>
+        <div>
+          <p>A trip has to be completed promptly. If details are still missing, such as the purpose or business partner, the app marks the trip as incomplete and reminds you before the deadline.</p>
+          <p>Complete trips are locked 7 days after the trip. After that they can no longer be changed. Until then you can make corrections; every change is recorded with date, time and the original value and appears in the PDF. A trip created by mistake can be voided; it stays visible with the reason.</p>
+        </div>
+      </details>
+
+      <details>
+        <summary>Why does the GPS distance differ from the odometer, and how do I fix it?</summary>
+        <div>
+          <p>GPS measures distance from individual position fixes. In curves, tunnels, parking garages or with weak reception, points are missing and the distance comes out slightly shorter or longer. The car's odometer also deviates slightly, for example due to tire size and wear. For the tax office, the vehicle's odometer is what counts.</p>
+          <p>To correct it: read the odometer at the end of the trip or day and enter it as the end reading of the last trip before the trip locks after 7 days. The change is documented. If you notice a difference later, the app shows a gap at the next odometer reading that you can close with an added trip. With an OBD adapter that reports the odometer, no manual check is needed.</p>
+          <p>If GPS is regularly off for your car, set a GPS correction in the vehicle settings, for example 1.02 for 2% more.</p>
+        </div>
+      </details>
+
+      <details>
+        <summary>Does recording continue with the screen locked?</summary>
+        <div><p>Yes. While a trip is active, the app keeps recording in the background. The "While using the app" permission is enough: you always start the recording yourself, and while it runs the iPhone shows the blue location indicator and Android a notification. Without an active trip, the app does not use your location. On Android, some manufacturers' battery savers stop background apps; if that happens, exclude OpenFahrtenbuch from battery optimization.</p></div>
+      </details>
+
+      <details>
+        <summary>Does the app work offline?</summary>
+        <div><p>Yes, recording and all your data work offline. Only turning coordinates into addresses usually needs a connection. If there is none, you add the address later.</p></div>
+      </details>
+
+      <details>
+        <summary>Can I hide private destinations in the export?</summary>
+        <div><p>Yes. For private trips, the tax office only needs the kilometers. On request, the export hides the destinations of private trips.</p></div>
+      </details>
+
+      <details>
+        <summary>Can I delete a trip?</summary>
+        <div><p>No, on purpose. The tax office does not accept a logbook from which entries can be deleted. Instead, you void the trip with a reason. It stays visible in the logbook but no longer counts.</p></div>
+      </details>
+
+      <details>
+        <summary>Is the app really free?</summary>
+        <div><p>Yes. No ads, no subscription, no in-app purchases. OpenFahrtenbuch is open source under the MIT license; the source code is on <a href="https://github.com/codextde/openfahrtenbuch">GitHub</a>.</p></div>
+      </details>
+    </div>
+
+    <div class="contact">
+      <h2>Contact</h2>
+      <p>Questions, feedback or found a bug? Email us at <a href="mailto:kontakt@codext.de">kontakt@codext.de</a>. You can also report bugs and requests as an issue on <a href="https://github.com/codextde/openfahrtenbuch/issues">GitHub</a>.</p>
+      <p>Please don't send us logbook exports with personal data unless we explicitly ask for them. We cannot provide tax advice.</p>
+    </div>
+  </main>
+  <footer>
+    <span>© 2026 Codext GmbH</span>
+    <nav aria-label="Footer"><a href="/en/">Home</a><a href="/en/privacy/">Privacy</a><a href="/impressum/">Imprint</a><a href="https://github.com/codextde/openfahrtenbuch">GitHub</a><a href="/support/" hreflang="de" lang="de">Deutsch</a></nav>
+  </footer>
+</div>
+</body>
+</html>
