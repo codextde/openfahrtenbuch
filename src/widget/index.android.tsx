@@ -1,3 +1,5 @@
+'use no memo';
+
 import { FlexWidget, registerWidgetTaskHandler, requestPinWidget, requestWidgetUpdate, SvgWidget, TextWidget } from 'react-native-android-widget';
 
 import { formatTime } from '@/core/format';
