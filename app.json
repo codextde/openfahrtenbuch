@@ -2,14 +2,14 @@
   "expo": {
     "name": "OpenFahrtenbuch",
     "slug": "openfahrtenbuch",
-    "version": "1.0.0",
+    "version": "1.1.0",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
     "scheme": "openfahrtenbuch",
     "userInterfaceStyle": "automatic",
     "ios": {
       "bundleIdentifier": "de.codext.fahrtenbuch",
-      "buildNumber": "3",
+      "buildNumber": "5",
       "supportsTablet": false,
       "config": {
         "usesNonExemptEncryption": false
@@ -24,18 +24,21 @@
         "NSLocationAlwaysAndWhenInUseUsageDescription": "OpenFahrtenbuch misst während einer laufenden Fahrt die Strecke, auch wenn du die App verlässt. Der Standort bleibt auf deinem iPhone.",
         "NSLocationAlwaysUsageDescription": "OpenFahrtenbuch misst während einer laufenden Fahrt die Strecke, auch wenn du die App verlässt. Der Standort bleibt auf deinem iPhone.",
         "NSBluetoothAlwaysUsageDescription": "OpenFahrtenbuch verbindet sich mit deinem Bluetooth-OBD-Adapter, um den Kilometerstand des Autos zu lesen."
-      }
+      },
+      "associatedDomains": [
+        "applinks:fahrtenbuch.codext.de"
+      ]
     },
     "android": {
       "package": "de.codext.fahrtenbuch",
-      "versionCode": 2,
+      "versionCode": 3,
       "adaptiveIcon": {
         "backgroundColor": "#0E9F6E",
         "foregroundImage": "./assets/images/android-icon-foreground.png",
         "backgroundImage": "./assets/images/android-icon-background.png",
         "monochromeImage": "./assets/images/android-icon-monochrome.png"
       },
-      "predictiveBackGestureEnabled": true,
+      "predictiveBackGestureEnabled": false,
       "permissions": [
         "android.permission.POST_NOTIFICATIONS"
       ],
@@ -46,6 +49,33 @@
         "android.permission.SYSTEM_ALERT_WINDOW",
         "android.permission.ACCESS_BACKGROUND_LOCATION",
         "android.permission.ACTIVITY_RECOGNITION"
+      ],
+      "intentFilters": [
+        {
+          "action": "VIEW",
+          "autoVerify": true,
+          "data": [
+            {
+              "scheme": "https",
+              "host": "fahrtenbuch.codext.de",
+              "path": "/start"
+            },
+            {
+              "scheme": "https",
+              "host": "fahrtenbuch.codext.de",
+              "path": "/stop"
+            },
+            {
+              "scheme": "https",
+              "host": "fahrtenbuch.codext.de",
+              "path": "/toggle"
+            }
+          ],
+          "category": [
+            "BROWSABLE",
+            "DEFAULT"
+          ]
+        }
       ]
     },
     "web": {
@@ -107,7 +137,66 @@
           }
         }
       ],
-      "./plugins/with-scene-lifecycle.js"
+      "./plugins/with-scene-lifecycle.js",
+      [
+        "react-native-nfc-manager",
+        {
+          "nfcPermission": "OpenFahrtenbuch beschreibt NFC-Tags, mit denen du eine Fahrt startest und beendest.",
+          "includeNdefEntitlement": false
+        }
+      ],
+      [
+        "./plugins/with-nfc-start.js",
+        {
+          "host": "fahrtenbuch.codext.de",
+          "paths": [
+            "/start",
+            "/stop",
+            "/toggle"
+          ],
+          "scheme": "openfahrtenbuch"
+        }
+      ],
+      [
+        "react-native-android-widget",
+        {
+          "fonts": [
+            "./node_modules/@expo-google-fonts/inter/500Medium/Inter_500Medium.ttf",
+            "./node_modules/@expo-google-fonts/inter/600SemiBold/Inter_600SemiBold.ttf"
+          ],
+          "widgets": [
+            {
+              "name": "Trip",
+              "label": "Fahrt starten",
+              "description": "Startet und beendet eine Fahrt mit einem Tipp",
+              "minWidth": "180dp",
+              "minHeight": "56dp",
+              "targetCellWidth": 3,
+              "targetCellHeight": 1,
+              "maxResizeHeight": "120dp",
+              "previewImage": "./assets/images/widget-preview.png",
+              "resizeMode": "horizontal|vertical",
+              "widgetCategory": "home_screen|keyguard",
+              "updatePeriodMillis": 0
+            }
+          ]
+        }
+      ],
+      [
+        "expo-quick-actions",
+        {
+          "androidIcons": {
+            "shortcut_start": {
+              "foregroundImage": "./assets/images/shortcut-start.png",
+              "backgroundColor": "#FFFFFF"
+            },
+            "shortcut_stop": {
+              "foregroundImage": "./assets/images/shortcut-stop.png",
+              "backgroundColor": "#FFFFFF"
+            }
+          }
+        }
+      ]
     ],
     "experiments": {
       "reactCompiler": true,

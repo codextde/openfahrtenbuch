@@ -5,4 +5,5 @@ ErrorUtils.setGlobalHandler((error, fatal) => {
 });
 
 require('@/tracking/recorder');
+require('@/widget').registerWidget();
 require('expo-router/entry');

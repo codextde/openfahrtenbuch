@@ -12,6 +12,7 @@ import { IconButton, success, tap } from '@/components/ui';
 import { formatDecimal, formatDuration, formatInt, formatTime } from '@/core/format';
 import { useRecording } from '@/data/hooks';
 import { useT } from '@/i18n';
+import { externalStop } from '@/lib/actions';
 import { fonts, radius, space, type } from '@/theme';
 import { useLive } from '@/tracking/live';
 import { discardRecording, liveDistanceKm, stopRecording } from '@/tracking/recorder';
@@ -65,7 +66,7 @@ export default function RecordingScreen() {
   }, []);
 
   useEffect(() => {
-    if (!trip && !finished.current) router.back();
+    if (!trip && !finished.current && !externalStop.active) router.back();
   }, [trip]);
 
   if (!trip) return <View style={{ flex: 1, backgroundColor: BG }} />;

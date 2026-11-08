@@ -11,10 +11,12 @@ import { GestureHandlerRootView } from 'react-native-gesture-handler';
 
 import { changed, repo } from '@/data/db';
 import { useT } from '@/i18n';
+import { useLinkActions } from '@/lib/actions';
 import { useObdAutoStart } from '@/lib/auto-obd';
 import { SCREENSHOT_MODE } from '@/lib/demo';
 import { iconFonts, textFonts } from '@/lib/fonts';
 import { scheduleReminders } from '@/lib/notify';
+import { useQuickActions } from '@/lib/quick-actions';
 import { useSettings } from '@/store/settings';
 import { useColors, useIsDark } from '@/theme';
 import { resumeRecording } from '@/tracking/recorder';
@@ -60,6 +62,8 @@ function Navigator() {
   const { t } = useT();
   useAppLifecycle(onboarded);
   useObdAutoStart(onboarded);
+  useLinkActions(onboarded);
+  useQuickActions(onboarded);
 
   const base = dark ? DarkTheme : DefaultTheme;
   const theme = {
@@ -97,6 +101,7 @@ function Navigator() {
           <Stack.Screen name="costs" options={{ ...pushed, title: t('costs.title') }} />
           <Stack.Screen name="cost/[id]" options={{ ...sheet, sheetAllowedDetents: [0.75, 1] }} />
           <Stack.Screen name="adapter" options={{ ...pushed, title: t('adapter.title') }} />
+          <Stack.Screen name="nfc" options={{ ...pushed, title: t('nfc.title') }} />
           <Stack.Screen name="integrity" options={{ ...pushed, title: t('integrity.title') }} />
           <Stack.Screen name="rules" options={{ ...pushed, title: t('rules.title') }} />
           <Stack.Screen name="about" options={{ ...pushed, title: t('about.title') }} />

@@ -3,7 +3,7 @@ import { router } from 'expo-router';
 import * as WebBrowser from 'expo-web-browser';
 import { ActionSheetIOS, Alert, Platform } from 'react-native';
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import { Prompt } from '@/components/prompt';
 import { Group, Header, Row, Screen, ToggleRow } from '@/components/ui';
@@ -12,9 +12,11 @@ import { useVehicles } from '@/data/hooks';
 import { useT } from '@/i18n';
 import { pickBackup, restoreBackup } from '@/lib/export';
 import { LINKS } from '@/lib/links';
+import { nfcSupported } from '@/lib/nfc';
 import { scheduleReminders, requestNotificationPermission } from '@/lib/notify';
 import { type LanguagePref, type TrackingMode, useSettings } from '@/store/settings';
 import { useColors } from '@/theme';
+import { pinWidget, widgetSupported } from '@/widget';
 
 function choose<T extends string | number>(title: string, options: { value: T; label: string }[], cancel: string, onPick: (v: T) => void) {
   if (Platform.OS === 'ios') {
@@ -32,6 +34,10 @@ export default function SettingsScreen() {
   const s = useSettings();
   const vehicles = useVehicles();
   const activeId = s.vehicleId ?? vehicles[0]?.id;
+  const [nfc, setNfc] = useState(false);
+  useEffect(() => {
+    nfcSupported().then(setNfc);
+  }, []);
   const [edit, setEdit] = useState<{ title: string; value: string; numeric?: boolean; onSave: (v: string) => void } | null>(null);
   const promptText = (title: string, value: string, onSave: (v: string) => void, keyboard?: 'number-pad') =>
     setEdit({ title, value, numeric: keyboard === 'number-pad', onSave });
@@ -109,6 +115,8 @@ export default function SettingsScreen() {
           }
         />
         <ToggleRow icon="route" title={t('settings.saveRoute')} subtitle={t('settings.saveRouteHint')} value={s.saveRoute} onChange={(saveRoute) => s.set({ saveRoute })} />
+        {nfc ? <Row icon="nfc" title={t('nfc.title')} onPress={() => router.push('/nfc')} /> : null}
+        {widgetSupported ? <Row icon="widget" title={t('widget.add')} onPress={pinWidget} /> : null}
         <Row icon="pin" title={t('settings.places')} subtitle={t('settings.placesHint')} onPress={() => router.push('/places')} last />
       </Group>
 

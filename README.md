@@ -7,6 +7,7 @@ Website: [fahrtenbuch.codext.de](https://fahrtenbuch.codext.de) · [App Store](h
 ## What it does
 
 - **Three ways to record:** one tap Start/Stop with GPS (keeps recording in the background while a trip runs), an ELM327 Bluetooth LE OBD adapter (reads the real odometer via OBD PID `A6` where the car supports it, otherwise integrates vehicle speed; can start and stop trips on its own), or manual entry like a paper logbook.
+- **Quick start:** write an NFC sticker in the app (tap to start, tap again to end), Android home screen widget, app icon quick actions, and links for Shortcuts, Tasker or the Action button: `openfahrtenbuch://start`, `openfahrtenbuch://stop`, `openfahrtenbuch://toggle` (also as `https://fahrtenbuch.codext.de/...`).
 - **Business, private, commute:** business trips require destination, purpose and business contact, with an optional route/detour note. Private trips only need kilometres; their destinations can be hidden in the export.
 - **Places:** home, main workplace and customers fill destination, purpose and contact automatically. Home to work is recognised as a commute.
 - **7-day rule:** reminders for incomplete trips. Complete trips are locked 7 days after the trip ended. Later entries are marked as "completed late" in the export.
@@ -36,6 +37,10 @@ bunx expo run:ios    # or run:android
 - `src/core` holds the platform-independent logic (ledger, rules, report, repository) and is tested with `bun scripts/core.check.ts` against `bun:sqlite`.
 - `src/tracking` contains the GPS task, OBD link and recorder.
 - `src/obd` is the ELM327 / BLE transport shared with [OpenBimmer](https://github.com/openbimmer/openbimmer).
+
+## Contributing
+
+Issues and pull requests are welcome. Run `bun run check` before you open a PR and keep changes focused.
 
 ## Privacy
 

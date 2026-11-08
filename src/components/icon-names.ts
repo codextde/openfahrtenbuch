@@ -54,6 +54,8 @@ export const icons = {
   fuel: { ios: 'fuelpump', android: 'local_gas_station' },
   wrench: { ios: 'wrench.and.screwdriver', android: 'build' },
   maps: { ios: 'map', android: 'map' },
+  nfc: { ios: 'wave.3.right', android: 'nfc' },
+  widget: { ios: 'square.grid.2x2', android: 'widgets' },
 } as const;
 
 export type IconName = keyof typeof icons;

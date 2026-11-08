@@ -1,0 +1,10 @@
+{
+  "applinks": {
+    "details": [
+      {
+        "appIDs": ["STSYBH724K.de.codext.fahrtenbuch"],
+        "components": [{ "/": "/start" }, { "/": "/stop" }, { "/": "/toggle" }]
+      }
+    ]
+  }
+}
