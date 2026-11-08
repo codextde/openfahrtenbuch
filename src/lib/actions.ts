@@ -37,6 +37,8 @@ export function takeAction() {
   return action;
 }
 
+export const externalStop = { active: false };
+
 let running = false;
 
 export async function runAction(action: LinkAction) {
@@ -58,8 +60,17 @@ async function perform(action: LinkAction) {
     return;
   }
   if (!trip) return;
-  const done = await stopRecording();
-  if (done) setTimeout(() => router.push(`/trip/${done.id}?finish=1`), 400);
+  externalStop.active = true;
+  try {
+    const done = await stopRecording();
+    if (!done) return;
+    if (router.canDismiss()) router.dismissAll();
+    router.push(`/trip/${done.id}?finish=1`);
+  } finally {
+    setTimeout(() => {
+      externalStop.active = false;
+    }, 1000);
+  }
 }
 
 export function useLinkActions(enabled: boolean) {

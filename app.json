@@ -9,7 +9,7 @@
     "userInterfaceStyle": "automatic",
     "ios": {
       "bundleIdentifier": "de.codext.fahrtenbuch",
-      "buildNumber": "4",
+      "buildNumber": "5",
       "supportsTablet": false,
       "config": {
         "usesNonExemptEncryption": false
