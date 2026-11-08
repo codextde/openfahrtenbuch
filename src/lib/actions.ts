@@ -59,7 +59,7 @@ async function perform(action: LinkAction) {
   }
   if (!trip) return;
   const done = await stopRecording();
-  if (done) router.push(`/trip/${done.id}?finish=1`);
+  if (done) setTimeout(() => router.push(`/trip/${done.id}?finish=1`), 400);
 }
 
 export function useLinkActions(enabled: boolean) {

@@ -13,7 +13,7 @@ const glyph = (running: boolean, color: string) =>
 
 const palette = {
   light: { bg: '#FFFFFF', text: '#0F1216', sub: '#5B6370', accent: '#0E9F6E', onAccent: '#FFFFFF', live: '#0F1216', liveSub: '#FFFFFFA0' },
-  dark: { bg: '#1A1E24', text: '#F2F4F6', sub: '#9AA1AB', accent: '#22C08A', onAccent: '#04130D', live: '#0F1216', liveSub: '#FFFFFFA0' },
+  dark: { bg: '#1A1E24', text: '#F2F4F6', sub: '#9AA1AB', accent: '#22C08A', onAccent: '#04130D', live: '#2A3038', liveSub: '#FFFFFFA0' },
 } as const;
 
 function TripWidget({ scheme, startedAt }: { scheme: keyof typeof palette; startedAt: number | null }) {
