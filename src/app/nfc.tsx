@@ -52,7 +52,7 @@ export default function NfcScreen() {
         <View style={{ width: 88, height: 88, borderRadius: 44, backgroundColor: c.accentSoft, alignItems: 'center', justifyContent: 'center' }}>
           {waiting ? <ActivityIndicator color={c.accentStrong} /> : <Icon name={done ? 'checkCircle' : 'nfc'} size={40} color={c.accentStrong} />}
         </View>
-        <Text style={[type.headline, { color: c.text, textAlign: 'center' }]}>{waiting ? t('nfc.hold') : done ? t('nfc.written') : t('nfc.title')}</Text>
+        {waiting || done ? <Text style={[type.headline, { color: c.text, textAlign: 'center' }]}>{waiting ? t('nfc.hold') : t('nfc.written')}</Text> : null}
         <Text style={[type.callout, { color: c.textSecondary, textAlign: 'center' }]}>{done ? t('nfc.done') : t('nfc.body')}</Text>
       </Card>
 
