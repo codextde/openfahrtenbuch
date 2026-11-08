@@ -1,0 +1,10 @@
+[
+  {
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "de.codext.fahrtenbuch",
+      "sha256_cert_fingerprints": ["F3:64:21:85:DB:8E:80:93:75:6A:78:92:98:24:70:D0:F9:E5:F8:48:EC:BC:12:76:35:D5:15:17:ED:FD:62:85"]
+    }
+  }
+]

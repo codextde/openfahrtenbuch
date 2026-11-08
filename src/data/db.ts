@@ -37,7 +37,7 @@ export function changed() {
   listeners.forEach((l) => l());
 }
 
-function subscribe(listener: () => void) {
+export function subscribe(listener: () => void) {
   listeners.add(listener);
   return () => {
     listeners.delete(listener);
